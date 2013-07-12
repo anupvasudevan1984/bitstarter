@@ -5,12 +5,16 @@ var app = express.createServer(express.logger());
 
 // initializing buffer and loading contents into file
 var buffer = new Buffer(256);
-file = fs.readFileSync('index.html', 'utf-8');
-buffer = buffer.write(file, "utf-8");
+buffer = fs.readFileSync('index.html', 'utf-8');
+//console.log(file);
+
+//buffer = buffer.write(file, "utf-8");
 len = buffer.length;
 
-//console.log(buffer.toString('utf8', 0, len));
 console.log(buffer);
+//console.log(buffer.toString('utf-8'));
+//console.log(Buffer.isBuffer(buffer));
+
 app.get('/', function(request, response) {
   response.send(buffer);
 });
